@@ -12,6 +12,7 @@ router.post('/', [
 
 ], (req, res)=>{
 
+    // Using express-validator to validate req.body responses & fetch its errors in errors object
    const errors = validationResult(req);
    if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array() });
@@ -21,6 +22,8 @@ router.post('/', [
 //    user.save()
 //    res.send(req.body);
 
+
+// Handling DB Errors like duplicate value errors
     User.create({
         name: req.body.name,
         email: req.body.email,
