@@ -1,27 +1,34 @@
 import './App.css';
-
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import About from './components/About';
+import NoteState from './context/notes/NoteState';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
 
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import About from './components/About';
 
 function App() {
   return (
     <>
-    <Router>
-            <Navbar/>
-            <Routes>
-                
-                <Route path="/" element={<Home/>} />
-                <Route exact path="/about" element={<About/>} />
+    <NoteState>
+        <Router>
+              <Navbar/>
+              <Routes>
+                  
+                  <Route path="/" 
+                      element={<Home/>} >
+                  </Route>  
 
-            </Routes>
-    </Router>
+                  <Route exact path="/about" 
+                      element={<About/>} >
+                  </Route>  
+
+              </Routes>
+        </Router>
+    </NoteState>
     </>
   );
 }
