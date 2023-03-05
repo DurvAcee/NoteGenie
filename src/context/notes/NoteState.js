@@ -40,7 +40,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "63f247c089bcac7ea1f864de",
+          "_id": "63f247c089bcac7ea1f864ee",
           "user": "63eb54572b7e8f2d937e2ba3",
           "title": "My Title",
           "description": "Please wake up early",
@@ -49,7 +49,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "63f247e0e3a29b585660ac23",
+          "_id": "63f247e0e3a29b585660ae23",
           "user": "63eb54572b7e8f2d937e2ba3",
           "title": "My Title",
           "description": "Please wake up early",
@@ -58,7 +58,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "63f247f70f5df5d58f8932a9",
+          "_id": "63f247f70f5df5d58f8932b9",
           "user": "63eb54572b7e8f2d937e2ba3",
           "title": "My Title",
           "description": "Please wake up early",
@@ -70,8 +70,34 @@ const NoteState = (props) => {
 
       const [notes, setNotes] = useState(notesInitial)
 
+      // Add a Note
+      const addNote = (title, description, tag) => {
+        // TODO : API Call
+        console.log("Adding a new Note");
+        const note = {
+          "_id": "63f247f70f5df5d58f8932b9",
+          "user": "63eb54572b7e8f2d937e2ba3",
+          "title": title,
+          "description": description,
+          "tag": tag,
+          "date": "2023-02-19T16:01:59.900Z",
+          "__v": 0
+        };
+        setNotes(notes.concat(note))
+      }
+
+      // Delete a Note
+      const deleteNote = () => {
+        
+      }
+
+      // Edit a Note
+      const updateNote = () => {
+        
+      }
+
     return (
-        <NoteContext.Provider value = {{notes, setNotes}}>
+        <NoteContext.Provider value = {{notes, addNote, deleteNote, updateNote}}>
             {props.children}
         </NoteContext.Provider>
     )
