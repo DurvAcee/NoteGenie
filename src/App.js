@@ -8,6 +8,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import { Alert } from './components/Alert';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <NoteState>
         <Router>
               <Navbar/>
+              <Alert message="This is Amazing react course"/>
               <div className="container">
                 <Routes>
                     
