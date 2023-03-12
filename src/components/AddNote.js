@@ -24,16 +24,18 @@ export const AddNote = () => {
               <div className="mb-3">
                 <label htmlFor="title">Title</label>
                 <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" onChange={onChange}/>
-                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
               </div>
+
               <div className="mb-3">
                 <label htmlFor="description">Description</label>
                 <input type="text" className="form-control" id="description" name="description" onChange={onChange}/>
               </div>
-              <div className="mb-3 form-check">
-                <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+
+              <div className="mb-3">
+                <label htmlFor="tag">Tag</label>
+                <input type="text" className="form-control" id="tag" name="tag" onChange={onChange}/>
               </div>
+              
               <button type="submit" className="btn btn-primary" onClick={handleClick}>Add Note!</button>
           </form>
         </div>
