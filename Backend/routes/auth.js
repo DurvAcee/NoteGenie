@@ -9,31 +9,27 @@ var fetchuser = require('../middleware/fetchuser');
 const JWT_SECRET = 'DurvAcee';
 
 
-// Route 1 : Create a User using: POST "/api/auth/". Doesn't require Auth
-router.post('/', [
+// Route 1 : Create a User using: POST "/api/auth/createuser". Doesn't require Auth
+router.post('/createuser', [
     body('name','Enter a Valid Name').isLength({min: 3}),
     body('email','Enter a Valid Email').isEmail(),
     body('password','Password must be atleast 5 characters').isLength({min: 5}),
 
 ], async (req, res)=>{
+    let success = false;
 
     // Using express-validator to validate req.body responses & fetch its errors in errors object
    const errors = validationResult(req);
    if(!errors.isEmpty()){
-        return res.status(400).json({errors: errors.array() });
+        return res.status(400).json({success, errors: errors.array() });
    }
-
-//    const user = User(req.body);
-//    user.save()
-//    res.send(req.body);
-
 
 // Handling DB Errors like duplicate value errors
 // Check whether the user with this email already exists
 try {
     let user = await User.findOne({email: req.body.email});
     if(user){
-        return res.status(400).json({error: "Sorry a user with this email already exists."})
+        return res.status(400).json({success, error: "Sorry a user with this email already exists."})
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -55,7 +51,8 @@ try {
         }
     }
     const authToken = jwt.sign(data, JWT_SECRET);
-    res.json(authToken);
+    success = true;
+    res.json({success, authToken});
 
 } catch (error) {
         console.error(error.message);
