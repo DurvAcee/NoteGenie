@@ -9,6 +9,8 @@ import {
   Route
 } from "react-router-dom";
 import { Alert } from './components/Alert';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 
 function App() {
@@ -27,6 +29,14 @@ function App() {
 
                     <Route exact path="/about" 
                         element={<About/>} >
+                    </Route>  
+
+                    <Route exact path="/login" 
+                        element={<Login/>} >
+                    </Route>  
+
+                    <Route exact path="/signup" 
+                        element={<Signup/>} >
                     </Route>  
               
                 </Routes>
